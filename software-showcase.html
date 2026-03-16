@@ -14,9 +14,11 @@
     body {
       min-height: 100vh;
       background:
-        radial-gradient(circle at 0% 0%, rgba(59, 130, 246, 0.22), transparent 55%),
-        radial-gradient(circle at 100% 100%, rgba(30, 64, 175, 0.28), transparent 55%),
-        linear-gradient(145deg, #020617 0%, #020617 35%, #0b1120 70%, #020617 100%);
+        radial-gradient(1200px 650px at 30% 5%, rgba(255, 255, 255, 0.06), transparent 55%),
+        radial-gradient(1000px 650px at 70% 10%, rgba(255, 255, 255, 0.04), transparent 58%),
+        radial-gradient(900px 500px at 15% 10%, rgba(59, 130, 246, 0.16), transparent 60%),
+        radial-gradient(900px 520px at 85% 85%, rgba(96, 165, 250, 0.12), transparent 62%),
+        linear-gradient(145deg, #05060a 0%, #0b0f17 35%, #040508 100%);
       font-family: "Noto Sans KR", -apple-system, BlinkMacSystemFont, sans-serif;
       color: #f9fafb; /* 기본 글자 */
       padding: 40px 20px 60px;
@@ -34,7 +36,7 @@
     .background-orb.orb-1 {
       width: 320px;
       height: 320px;
-      background: rgba(59, 130, 246, 0.45);
+      background: rgba(15, 23, 42, 0.7);
       top: -80px;
       left: -40px;
     }
@@ -42,14 +44,47 @@
     .background-orb.orb-2 {
       width: 360px;
       height: 360px;
-      background: rgba(56, 189, 248, 0.4);
+      background: rgba(15, 23, 42, 0.6);
       bottom: -120px;
       right: -40px;
+    }
+
+    /* 화면 가장자리 블러(비네팅 느낌) */
+    .edge-blur {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      mask-image: radial-gradient(circle at center, transparent 55%, black 85%);
+      -webkit-mask-image: radial-gradient(circle at center, transparent 55%, black 85%);
+    }
+
+    /* 아주 은은한 메탈 그레인 */
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.06;
+      background-image:
+        repeating-linear-gradient(
+          0deg,
+          rgba(255, 255, 255, 0.06),
+          rgba(255, 255, 255, 0.06) 1px,
+          transparent 1px,
+          transparent 3px
+        );
+      mix-blend-mode: overlay;
     }
 
     .container {
       max-width: 980px;
       margin: 0 auto;
+      position: relative;
+      z-index: 1;
     }
 
     /* 헤더 */
@@ -324,6 +359,51 @@
 <body>
   <div class="background-orb orb-1"></div>
   <div class="background-orb orb-2"></div>
+  <div class="edge-blur"></div>
+  <!-- 이스터에그: 상단 작은 선물 상자 -->
+  <button
+    id="luckyGift"
+    type="button"
+    aria-label="행운 상자"
+    style="
+      position: fixed;
+      top: 18px;
+      right: 18px;
+      z-index: 3;
+      width: 38px;
+      height: 38px;
+      border-radius: 12px;
+      border: 1px solid rgba(148, 163, 184, 0.9);
+      background: radial-gradient(circle at 30% 0%, rgba(255,255,255,0.26), transparent 60%), #111827;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
+      color: #f9fafb;
+      font-size: 18px;
+    "
+  >
+    🎁
+  </button>
+  <div
+    style="
+      position: fixed;
+      top: 62px;
+      right: 12px;
+      z-index: 3;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.92);
+      border: 1px solid rgba(148, 163, 184, 0.7);
+      color: #e5e7eb;
+      font-size: 0.75rem;
+      white-space: nowrap;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.7);
+    "
+  >
+    누르면 행운이 올지도 ✨
+  </div>
   <div class="container">
     <header>
       <h1>김지헌</h1>
@@ -350,9 +430,9 @@
       <div class="intro-card">
         <h3>간단한 자기소개</h3>
         <p>
-          소프트웨어 개발에 관심이 있어 웹사이트 제작을 배우고 있습니다. 새로운 아이디어를 생각하고 직접 만들어보는 것을 좋아하며,
-          맡은 일을 끝까지 해내는 성실함과 친구들과 함께 프로젝트를 진행하는 협업 능력을 중요하게 생각합니다.
-          동아리 활동을 통해 이러한 강점을 살려 다양한 프로젝트를 경험하며 성장하고 싶습니다.
+          소프트웨어 개발에 관심이 있어 웹사이트 제작과 같은 분야를 배우고 싶어합니다. 새로운 아이디어를 떠올리고 직접 만들어보는 과정을 좋아합니다.
+          저의 장점은 맡은 일을 끝까지 책임지고 해내는 성실함과, 친구들과 함께 의견을 나누며 프로젝트를 진행하는 협업 능력입니다.
+          동아리 활동을 통해 이러한 장점을 살려 다양한 프로젝트를 경험하며 더 성장하고 싶습니다.
         </p>
       </div>
       <div class="strengths-card">
@@ -384,15 +464,30 @@
       <div class="cert-list">
         <div class="cert-item">
           <p class="cert-label">3년 개근상</p>
-          <img src="attendance-award.png" alt="3년 개근상" data-cert-image="attendance" />
+          <img
+            src="attendance-award.png"
+            alt="3년 개근상"
+            data-cert-image="attendance"
+            onerror="this.onerror=null;this.src='assets/attendance-award.png';"
+          />
         </div>
         <div class="cert-item">
           <p class="cert-label">표창장</p>
-          <img src="commendation.png" alt="표창장" data-cert-image="commendation" />
+          <img
+            src="commendation.png"
+            alt="표창장"
+            data-cert-image="commendation"
+            onerror="this.onerror=null;this.src='assets/commendation.png';"
+          />
         </div>
         <div class="cert-item">
           <p class="cert-label">전교 학생회 부회장 임명장</p>
-          <img src="vice-president-appointment.png" alt="전교 학생회 부회장 임명장" data-cert-image="vice" />
+          <img
+            src="vice-president-appointment.png"
+            alt="전교 학생회 부회장 임명장"
+            data-cert-image="vice"
+            onerror="this.onerror=null;this.src='assets/vice-president-appointment.png';"
+          />
         </div>
       </div>
     </section>
@@ -428,6 +523,14 @@
           showCert(key);
         });
       });
+
+      // 이스터에그: 작은 선물 상자 클릭 시 메시지
+      var luckyGiftBtn = document.getElementById('luckyGift');
+      if (luckyGiftBtn) {
+        luckyGiftBtn.addEventListener('click', function () {
+          alert('안녕하세요!\n이 포트폴리오를 방문해주셔서 감사합니다.\n열심히 할 자신 있습니다!');
+        });
+      }
 
       // 스크롤 애니메이션
       var revealEls = document.querySelectorAll('.reveal-on-scroll');
